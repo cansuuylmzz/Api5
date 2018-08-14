@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <form id="frm">
+         <label>Name</label>
+        <input type="text" name="Name" />
+        <label>Weight</label>
+        <input type="text" name="Weight" />
+        <input type="submit" name="Name" />
+    </form>
+</body>
+</html>
+
+<script>
+    $("#frm").submit(function (e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            url: "http://localhost:9461/api/product",
+            type: "POST",
+            data: $("#frm").serialize(),
+            success: function (response) {
+                //alert(JSON.stringify(response));
+                console.log(response);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+    })
+</script>
